@@ -1,0 +1,56 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+.header{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.nav{
+    flex-basis: 70%;
+   
+}
+.nav ul {
+    align-items: center;
+}
+.nav li{
+    list-style: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************* Utilities ****************************/
+.d-flex{
+    display: flex;
+
+}
+.justify-content{
+    justify-content: space-between;
+}
