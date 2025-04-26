@@ -14,6 +14,7 @@ const secDesc = document.getElementById("sec-desc");
 
 /************************************************************************** */
 const latestNewsContainerEl = document.querySelector(".latest-news");
+const trendingContainer = document.querySelector(".trending");
 
 function addToDom(news) {
   console.log(news.articles[0]);
@@ -53,6 +54,9 @@ function addInformationToSkeleton(latest) {
     const newsBox = createSkeleton();
     // img setting
     if (!latest.articles[i].urlToImage) continue;
+    const url = latest.articles[i].url;
+    if (url.includes("biztoc.com")) continue;
+
     const img = newsBox.firstElementChild;
     img.src = latest.articles[i].urlToImage;
     if (img.src == null) continue;
@@ -107,7 +111,6 @@ function createSkeleton() {
 }
 
 function getLatestNews() {
-  const category = "general";
   const urlLatest = `https://newsapi.org/v2/everything?q=india&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;
   const latestNews = fetch(urlLatest)
     .then((res) => {
@@ -122,6 +125,59 @@ function getLatestNews() {
       console.log(err);
     });
 }
+
+function trendingNewsToUi(trending) {
+  for (let i = 0; i < 20; i++) {
+    if (!trending.articles[i].urlToImage) continue;
+
+    const url = trending.articles[i].url;
+    if (url.includes("biztoc.com")) continue;
+
+    const img = trending.articles[i].urlToImage;
+    const aTag = trending.articles[i].url;
+    const title = trending.articles[i].title;
+    const desc = trending.articles[i].description;
+
+    const divEl = document.createElement("div");
+    divEl.classList.add("trend");
+    const imgEl = document.createElement("img");
+    const div2 = document.createElement("div");
+    div2.classList.add("details");
+
+    const a = document.createElement("a");
+    const h1 = document.createElement("h1");
+    const p = document.createElement("p");
+    div2.append(a, p);
+    a.appendChild(h1);
+    divEl.append(imgEl, div2);
+
+    imgEl.src = img;
+    a.href = aTag;
+    h1.textContent = title;
+    p.textContent = desc;
+
+    trendingContainer.appendChild(divEl);
+
+    /********************************************* */
+  }
+}
+
+function getTrendingNews() {
+  const urlTrending = `https://newsapi.org/v2/everything?q=trending&sortBy=popularity&apiKey=${apiKey}`;
+  const trending = fetch(urlTrending)
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+    .then((response) => {
+      console.log(response);
+      trendingNewsToUi(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 getLatestNews();
 
 getHeadlines();
+getTrendingNews();
