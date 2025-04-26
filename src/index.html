@@ -8,26 +8,184 @@
       href="../assets/microphone.png"
       type="image/x-icon"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <title>news Laundry</title>
   </head>
   <body>
-    <div class="header d-flex">
+    <div class="top-container d-flex">
       <div class="logo d-flex">
         <img src="../assets/microphone.png" alt="" />
         <h1>News Laundry</h1>
       </div>
+
+      <div class="search-container">
+        <input type="text" placeholder="Search for headlines" />
+        <button class="search-btn">Search</button>
+      </div>
+    </div>
+
+    <div class="main-container">
       <div class="nav">
         <nav>
           <ul class="d-flex justify-content">
-            <li>Home</li>
-            <li>Sports</li>
-            <li>Climate</li>
+            <li>Politics</li>
+            <li>World</li>
+            <li>Economy</li>
+            <li>Business</li>
             <li>Travel</li>
-            <li>Entertainment</li>
-            <li>Success Stories</li>
+            <li>Lifestyle</li>
+            <li>Sports</li>
+            <li>Food</li>
           </ul>
         </nav>
+      </div>
+      <div class="main-container_news">
+        <div class="headlines d-flex">
+          <div class="headline-primary">
+            <a
+              id="primary-a"
+              href="https://www.ndtv.com/world-news/donald-trump-why-the-us-inaugurates-presidents-in-january-months-after-november-elections-7477926"
+              target="_blank"
+              ><h4 id="primary-title">
+                Why The US Presidential Inauguration Is Taking Place Months
+                After Election
+              </h4></a
+            >
+            <p id="primary-desc">
+              Unlike many democracies where the power transition is almost
+              immediately after elections, the US follows a longer process.
+            </p>
+
+            <img id="primary-img" alt="" />
+            <div class="about d-flex justify-content">
+              <p>By: <span id="by">NDTV News Desk</span></p>
+              <p>published On : <span> Jan 15, 2025 16:12 pm IST </span></p>
+            </div>
+            <a href="" class="read-more-icon">
+              Read-more <i class="fa-solid fa-arrow-right"></i
+            ></a>
+            <div class="read-more">
+              <p>
+                Donald Trump will take oath as the 47th president of the United
+                States on January 20. The 78-year-old, set to take office for
+                the second term, won the November elections with 312 electoral
+                votes. He will take over from the incumbent President Joe Biden.
+                But why is there such a long gap between the presidential
+                election and inauguration in the US? Unlike many democracies
+                where the power transition is almost immediately after
+                elections, the US follows a longer process.
+              </p>
+            </div>
+          </div>
+          <div class="headline-secondry">
+            <a
+              id="sec-a"
+              href="https://www.ndtv.com/world-news/donald-trump-why-the-us-inaugurates-presidents-in-january-months-after-november-elections-7477926"
+              target="_blank"
+              ><h4 id="sec-title">
+                Why The US Presidential Inauguration Is Taking Place Months
+                After Election
+              </h4></a
+            >
+            <p class="sec-desc">
+              Unlike many democracies where the power transition is almost
+              immediately after elections, the US follows a longer process.
+            </p>
+
+            <img id="sec-img" />
+            <div class="about-sec">
+              <p>By: <span id="by">NDTV News Desk</span></p>
+              <p>published On : <span> Jan 15, 2025 16:12 pm IST </span></p>
+            </div>
+            <a href="" class="read-more-icon">
+              Read-more<i class="fa-solid fa-arrow-right"></i
+            ></a>
+            <div class="read-more">
+              <p>
+                Donald Trump will take oath as the 47th president of the United
+                States on January 20. The 78-year-old, set to take office for
+                the second term, won the November elections with 312 electoral
+                votes. He will take over from the incumbent President Joe Biden.
+                But why is there such a long gap between the presidential
+                election and inauguration in the US? Unlike many democracies
+                where the power transition is almost immediately after
+                elections, the US follows a longer process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading d-flex">
+      <h1>LATEST</h1>
+      <div class="hr"></div>
+    </div>
+
+    <div class="latest-news-container d-flex justify-conten">
+      <div class="latest-news d-flex justify-content">
+        <div class="news">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtvuVJTMCypF61gCbC9KAK4hFDiMhxnr41ZQ&s"
+            alt=""
+          />
+          <a href="https://www.bbc.com/news/articles/czx7w7q7qzro"
+            ><h1>Anger over Vance 'random country' peacekeeping remark</h1></a
+          >
+          <p class="m1">
+            Ernakulam: Former NASA astronaut Steve Lee Smith has lauded India
+            for its accomplishments in the space sector.
+          </p>
+          <div class="details">
+            <p>By : <span>ginni denis</span></p>
+            <p>On : <span>23 feb 2025</span></p>
+          </div>
+        </div>
+        <div class="news">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtvuVJTMCypF61gCbC9KAK4hFDiMhxnr41ZQ&s"
+            alt=""
+          />
+          <a href="https://www.bbc.com/news/articles/czx7w7q7qzro"
+            ><h1>Anger over Vance 'random country' peacekeeping remark</h1></a
+          >
+          <p class="m1">
+            Ernakulam: Former NASA astronaut Steve Lee Smith has lauded India
+            for its accomplishments in the space sector.
+          </p>
+          <div class="details">
+            <p>By : <span>ginni denis </span></p>
+            <p>On : <span>23 feb 2025</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="trending-news">
+        <h1 class="m1">TRENDING</h1>
+        <div class="trend">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_bKueOF4DCpib-JBoiSCtAnCDebJKNoM8lg&s"
+            alt=""
+          />
+          <div class="details">
+            <a
+              href="https://english.mathrubhumi.com/news/india/nasa-astronaut-applauds-mars-mission-of-india-as-global-first-1.9721919"
+              ><h2>
+                Former NASA astronaut applauds India's Mars Mission as global
+              </h2></a
+            >
+            <p>
+              Ernakulam: Former NASA astronaut Steve Lee Smith has lauded India
+              for its accomplishments in the space sector.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <hr />
