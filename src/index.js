@@ -1,6 +1,8 @@
 import "./styles.css";
 
-const apiKey = `d3b4aa55576c4658ab70b936ed107197`;
+const query = document.querySelector("#search");
+
+const apiKey = "c033637d5d6047dc9c4ed5b63c203bab";
 const primaryLink = document.getElementById("primary-a");
 const primaryTitle = document.getElementById("primary-title");
 const primaryImg = document.getElementById("primary-img");
@@ -50,6 +52,7 @@ function getHeadlines() {
 }
 
 function addInformationToSkeleton(latest) {
+  latestNewsContainerEl.replaceChildren();
   for (let i = 0; i < latest.articles.length; i++) {
     const newsBox = createSkeleton();
     // img setting
@@ -111,7 +114,10 @@ function createSkeleton() {
 }
 
 function getLatestNews() {
-  const urlLatest = `https://newsapi.org/v2/everything?q=india&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;
+  let keyword = query.value;
+  console.log(keyword);
+  if (!keyword) keyword = "india";
+  const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;
   const latestNews = fetch(urlLatest)
     .then((res) => {
       console.log(res);
@@ -127,7 +133,7 @@ function getLatestNews() {
 }
 
 function trendingNewsToUi(trending) {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 8; i++) {
     if (!trending.articles[i].urlToImage) continue;
 
     const url = trending.articles[i].url;
@@ -177,7 +183,12 @@ function getTrendingNews() {
       console.log(err);
     });
 }
+/************************************************** */
+
 getLatestNews();
 
 getHeadlines();
 getTrendingNews();
+
+const searchBtn = document.querySelector(".search-btn");
+searchBtn.addEventListener("click", getLatestNews);

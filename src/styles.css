@@ -2,8 +2,16 @@
     margin:0;
     box-sizing: border-box;
 }
+:root{
+    --primary: #411d2b;
+    --secondry:#211720;
+    --tertiary : #110e15;
+    --quartnary : #2a0a11;
+    --color: #430e18;
+}
 body{
     background-color: lightblue;
+    
 }
 
 .logo img{
@@ -90,6 +98,13 @@ font-family:math;
 .headlines img {
  width:100%;   
 }
+.headline-primary img{
+    max-height: 500px;
+}
+.headline-secondry img{
+    max-height: 300px;
+}
+
 .read-more{
     display: none;
 }
@@ -106,16 +121,20 @@ font-family:math;
 }
 
 .latest-news {
- flex-basis: 70%;
+ 
  flex-wrap: wrap;
+ box-sizing: border-box;
+ border:2px solid orange;
 }
 .news{
     text-align: center;
-    margin: 1rem;
+   margin:0.5rem;
+    height: fit-content;
  
-    padding-top: 0;
-    width: 40%;
+   
+    width: 30%;
     min-width: 270px;
+    /* height: min-content; */
 
     border:1px solid cadetblue;
 }
@@ -125,19 +144,28 @@ font-family:math;
 .news a{
   
     font-size: 0.65rem;
+    margin-top:2rem;
     text-decoration: none;
     text-align: center;
 }
 .trending-news{
-    flex-basis: 25%;
+   
     background-color: white;
-    
     padding:1rem;
     text-align: center;
-    position: relative;
-    bottom: 140px;
+  
+  
 
 }
+.trending{
+   
+display: flex;
+gap:2rem;
+justify-content: space-around;
+flex-wrap: wrap;
+
+}
+
 .heading{
     width: 60%;
 }
@@ -151,9 +179,7 @@ font-family:math;
     margin-top: 1rem;
     background-color: black;
 }
-.latest-news {
-    border:2px solid orange;
-}
+
 
 .trend a{
 font-size: 0.5rem;
@@ -162,6 +188,8 @@ font-size: 0.5rem;
 
 .trend{
     border:green solid 1px;
+    width: 20%;
+    gap:2rem;
 }
 .trend img{
     width: 100%;
@@ -179,14 +207,6 @@ a:hover{
     text-decoration: underline;
     color:pink;
 }
-
-
-
-
-
-
-
-
 
 
 @media (max-width: 760px){
