@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="../assets/microphone.png"
+      href="../assets/logo.jpg"
       type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=PT+Sans+Narrow:wght@400;700&family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
     />
     <link
       rel="stylesheet"
@@ -21,13 +27,20 @@
   <body>
     <div class="top-container d-flex">
       <div class="logo d-flex">
-        <img src="../assets/microphone.png" alt="" />
+        <img src="../assets/logo.jpg" alt="" />
         <h1>News Laundry</h1>
       </div>
 
       <div class="search-container">
         <input type="text" placeholder="Search for headlines" id="search" />
         <button class="search-btn">Search</button>
+      </div>
+      <div class="lang">
+        <select name="lang" id="lang">
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+
+        </select>
       </div>
     </div>
 
@@ -62,25 +75,10 @@
               immediately after elections, the US follows a longer process.
             </p>
 
-            <img id="primary-img" alt="" />
+            <img id="primary-img"  />
             <div class="about d-flex justify-content">
-              <p>By: <span id="by">NDTV News Desk</span></p>
-              <p>published On : <span> Jan 15, 2025 16:12 pm IST </span></p>
-            </div>
-            <a href="" class="read-more-icon">
-              Read-more <i class="fa-solid fa-arrow-right"></i
-            ></a>
-            <div class="read-more">
-              <p>
-                Donald Trump will take oath as the 47th president of the United
-                States on January 20. The 78-year-old, set to take office for
-                the second term, won the November elections with 312 electoral
-                votes. He will take over from the incumbent President Joe Biden.
-                But why is there such a long gap between the presidential
-                election and inauguration in the US? Unlike many democracies
-                where the power transition is almost immediately after
-                elections, the US follows a longer process.
-              </p>
+              <p>By: <span id="primary-by">NDTV News Desk</span></p>
+              <p>published On : <span id="primary-date"> Jan 15, 2025 16:12 pm IST </span></p>
             </div>
           </div>
           <div class="headline-secondry">
@@ -93,30 +91,15 @@
                 After Election
               </h4></a
             >
-            <p class="sec-desc">
+            <p id="sec-desc">
               Unlike many democracies where the power transition is almost
               immediately after elections, the US follows a longer process.
             </p>
 
             <img id="sec-img" />
             <div class="about-sec">
-              <p>By: <span id="by">NDTV News Desk</span></p>
-              <p>published On : <span> Jan 15, 2025 16:12 pm IST </span></p>
-            </div>
-            <a href="" class="read-more-icon">
-              Read-more<i class="fa-solid fa-arrow-right"></i
-            ></a>
-            <div class="read-more">
-              <p>
-                Donald Trump will take oath as the 47th president of the United
-                States on January 20. The 78-year-old, set to take office for
-                the second term, won the November elections with 312 electoral
-                votes. He will take over from the incumbent President Joe Biden.
-                But why is there such a long gap between the presidential
-                election and inauguration in the US? Unlike many democracies
-                where the power transition is almost immediately after
-                elections, the US follows a longer process.
-              </p>
+              <p>By: <span id="secondry-by">NDTV News Desk</span></p>
+              <p>published On : <span id="secondry-date"> Jan 15, 2025 16:12 pm IST </span></p>
             </div>
           </div>
         </div>
@@ -127,8 +110,9 @@
       <h1>LATEST</h1>
       <div class="hr"></div>
     </div>
-
-    <div class="latest-news-container d-flex justify-conten">
+    <h1 id="keyword"></h1>
+    <div class="latest-news-container d-flex justify-content">
+     
       <div class="latest-news d-flex justify-content"></div>
     </div>
     <div class="trending-news">
@@ -136,6 +120,27 @@
       <div class="trending"></div>
     </div>
     <hr />
+  
+        <div class="contact-container">
+           
+              <h1 class="heading-font">Contact Us</h1>
+              <p >Please get in touch, if you think our work could be mutually benefial!</p>
+              <address> 1234 Random Road, Random Town, California 12345</address>
+              <div class="d-flex"><i class="fa-solid fa-phone"></i><span>555-555-55555</span></div>
+              <div class="d-flex"><i class="fa-solid fa-envelope"></i><span>this.website.not.real@gmail.com</span></div>
+              <div class="icons">
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-square-twitter"></i>
+            </div>
+    
+       
+    
+          </div>
+          
+      
+        <footer>copyright by Vandana 2025 </footer>
+    </div>
 
     <script src="index.js" type="module"></script>
   </body>

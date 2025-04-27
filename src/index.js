@@ -2,11 +2,14 @@ import "./styles.css";
 
 const query = document.querySelector("#search");
 
-const apiKey = "c033637d5d6047dc9c4ed5b63c203bab";
+const apiKey = "a7b56bc21d024766a297882099d87413";
 const primaryLink = document.getElementById("primary-a");
 const primaryTitle = document.getElementById("primary-title");
 const primaryImg = document.getElementById("primary-img");
 const primaryDesc = document.getElementById("primary-desc");
+const authorPrimary = document.getElementById("primary-by");
+const datePrimary = document.getElementById("primary-date");
+
 /********************************************************************** */
 
 const secLink = document.getElementById("sec-a");
@@ -14,40 +17,72 @@ const secTitle = document.getElementById("sec-title");
 const secImg = document.getElementById("sec-img");
 const secDesc = document.getElementById("sec-desc");
 
+const authorSec = document.getElementById("secondry-by");
+const dateSec = document.getElementById("secondry-date");
+console.log(authorSec, dateSec, secDesc);
+
 /************************************************************************** */
 const latestNewsContainerEl = document.querySelector(".latest-news");
 const trendingContainer = document.querySelector(".trending");
+// latestNewsContainerEl.scrollIntoView({ behavior: "smooth" });
 
 function addToDom(news) {
-  console.log(news.articles[0]);
-  primaryLink.href = news.articles[0].url;
-  primaryTitle.textContent = news.articles[0].title;
-  primaryImg.src = news.articles[0].urlToImage;
+  for (let i = 1; i < 4; i++) {
+    if (!news.articles[i].urlToImage) continue;
+    const url = news.articles[i].url;
+    if (url.includes("biztoc.com") || url.includes("english.khabarhub.com"))
+      continue;
 
-  primaryDesc.textContent = news.articles[0].description;
-  /*********************************************************/
+    primaryLink.href = news.articles[i - 1].url;
+    primaryTitle.textContent = news.articles[i - 1].title;
+    primaryImg.src = news.articles[i - 1].urlToImage;
 
-  secLink.href = news.articles[1].url;
-  secTitle.textContent = news.articles[1].title;
-  secImg.src = news.articles[1].urlToImage;
-  secDesc.textContent = news.articles[1].description;
+    primaryDesc.textContent = news.articles[i - 1].description;
+    authorPrimary.textContent = news.articles[i - 1].author;
 
+    const date = news.articles[i - 1].publishedAt.split("T");
+    datePrimary.textContent = date[0];
+
+    /*********************************************************/
+
+    secLink.href = news.articles[i].url;
+    secTitle.textContent = news.articles[i].title;
+    secImg.src = news.articles[i].urlToImage;
+
+    secDesc.textContent = news.articles[i].description;
+
+    authorSec.textContent = news.articles[i].author;
+
+    const secDate = news.articles[i].publishedAt.split("T");
+    dateSec.textContent = secDate[0];
+  }
   /************************************************************** */
+}
+
+function MoveTosearchContent() {
+  let keyword = document.getElementById("keyword");
+  console.log(keyword);
+  keyword.textContent = query.value;
+  getLatestNews();
+  latestNewsContainerEl.scrollIntoView({ behavior: "smooth" });
 }
 
 function getHeadlines() {
   const country = "india";
-  const keyword = "science";
+  let keyword = query.value;
+  if (!keyword) keyword = "health";
   const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+  // const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
   const x = fetch(url)
     .then((res) => {
       return res.json();
     })
     .then((response) => {
       addToDom(response);
+      console.log(response);
     })
     .catch((err) => {
-      console.log("error occured");
+      console.log("error occured", err);
     });
 }
 
@@ -108,7 +143,6 @@ function createSkeleton() {
 
   /****************************************************** */
   newsContainer.append(imgEl, anchorEl, desc, detailContainer);
-  console.log("last line");
 
   return newsContainer;
 }
@@ -117,7 +151,9 @@ function getLatestNews() {
   let keyword = query.value;
   console.log(keyword);
   if (!keyword) keyword = "india";
-  const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;
+  //const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;//
+  const urlLatest = `https://newsapi.org/v2/everything?q=india&language=hi&sortBy=publishedAt&apiKey=${apiKey}`;
+
   const latestNews = fetch(urlLatest)
     .then((res) => {
       console.log(res);
@@ -133,7 +169,7 @@ function getLatestNews() {
 }
 
 function trendingNewsToUi(trending) {
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 15; i++) {
     if (!trending.articles[i].urlToImage) continue;
 
     const url = trending.articles[i].url;
@@ -191,4 +227,4 @@ getHeadlines();
 getTrendingNews();
 
 const searchBtn = document.querySelector(".search-btn");
-searchBtn.addEventListener("click", getLatestNews);
+searchBtn.addEventListener("click", MoveTosearchContent);
