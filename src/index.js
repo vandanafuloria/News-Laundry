@@ -62,7 +62,7 @@ function addToDom(news) {
 
 function MoveTosearchContent() {
   let keyword = document.getElementById("keyword");
-  console.log(keyword);
+
   keyword.textContent = query.value;
   getLatestNews();
   latestNewsContainerEl.scrollIntoView({ behavior: "smooth" });
