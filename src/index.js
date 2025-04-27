@@ -1,4 +1,5 @@
 import "./styles.css";
+const languageEl = document.getElementById("lang");
 
 const query = document.querySelector("#search");
 
@@ -68,10 +69,11 @@ function MoveTosearchContent() {
 }
 
 function getHeadlines() {
+  const lang = languageEl.value;
   const country = "india";
   let keyword = query.value;
   if (!keyword) keyword = "health";
-  const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+  const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=${lang}&sortBy=publishedAt&apiKey=${apiKey}`;
   // const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
   const x = fetch(url)
     .then((res) => {
@@ -148,11 +150,12 @@ function createSkeleton() {
 }
 
 function getLatestNews() {
+  const lang = languageEl.value;
   let keyword = query.value;
   console.log(keyword);
   if (!keyword) keyword = "india";
   //const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;//
-  const urlLatest = `https://newsapi.org/v2/everything?q=india&language=hi&sortBy=publishedAt&apiKey=${apiKey}`;
+  const urlLatest = `https://newsapi.org/v2/everything?q=india&language=${lang}&sortBy=publishedAt&apiKey=${apiKey}`;
 
   const latestNews = fetch(urlLatest)
     .then((res) => {
@@ -169,7 +172,8 @@ function getLatestNews() {
 }
 
 function trendingNewsToUi(trending) {
-  for (let i = 0; i < 15; i++) {
+  trendingContainer.replaceChildren();
+  for (let i = 0; i < 8; i++) {
     if (!trending.articles[i].urlToImage) continue;
 
     const url = trending.articles[i].url;
@@ -205,14 +209,15 @@ function trendingNewsToUi(trending) {
 }
 
 function getTrendingNews() {
-  const urlTrending = `https://newsapi.org/v2/everything?q=trending&sortBy=popularity&apiKey=${apiKey}`;
+  const lang = languageEl.value;
+  const urlTrending = `https://newsapi.org/v2/everything?q=trending&language=${lang}&sortBy=popularity&apiKey=${apiKey}`;
   const trending = fetch(urlTrending)
     .then((res) => {
       console.log(res);
       return res.json();
     })
     .then((response) => {
-      console.log(response);
+      console.log("trending", response);
       trendingNewsToUi(response);
     })
     .catch((err) => {
@@ -225,6 +230,10 @@ getLatestNews();
 
 getHeadlines();
 getTrendingNews();
+
+languageEl.addEventListener("change", getHeadlines);
+languageEl.addEventListener("change", getLatestNews);
+languageEl.addEventListener("change", getTrendingNews);
 
 const searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("click", MoveTosearchContent);

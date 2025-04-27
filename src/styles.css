@@ -311,7 +311,7 @@ font-style: oblique;
  overflow: hidden;
     gap:2rem;
     background-color: whitesmoke;
-
+max-width: 350px;
     min-width: 250px;
 transition: 0.5s ease;
 }
