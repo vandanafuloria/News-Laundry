@@ -57,3 +57,25 @@ npm install --save-dev parcel
 ```
 http://localhost:1234
 ```
+
+# Api Used
+
+`https://newsapi.org/`
+
+- 🔑 Keyword (q) – Search for news articles related to any topic (e.g., "health", "India", "world").
+
+- 🗣 Language (language) – Retrieve articles in different languages like en (English), hi (Hindi), etc.
+
+- 📄 Pagination (page, pageSize) – Control how many results you get and on which page.
+
+- 🔥 Popularity (sortBy=popularity) – Sort news by popularity to get trending articles.
+
+- 🕒 Date (from, to) – Filter articles published within a specific date range.\*
+
+```
+https://newsapi.org/v2/everything?q=india&language=en&sortBy=popularity&page=1&pageSize=10&from=2024-04-01&to=2024-04-29&apiKey=YOUR_API_KEY
+```
+
+`News content is dynamically displayed based on user-selected customizations such as language, keywords, and popularity.`
+
+# Contact Me 🧑🏻‍💻👉[Email](vandanafuloria@gmail.com)
