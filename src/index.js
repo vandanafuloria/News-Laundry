@@ -1,4 +1,13 @@
 import "./styles.css";
+const loaderEl = document.getElementById("loader");
+
+function showLoader() {
+  loaderEl.style.display = "flex";
+}
+function hideLoader() {
+  loaderEl.style.display = "none";
+}
+
 const languageEl = document.getElementById("lang");
 
 const query = document.querySelector("#search");
@@ -20,7 +29,6 @@ const secDesc = document.getElementById("sec-desc");
 
 const authorSec = document.getElementById("secondry-by");
 const dateSec = document.getElementById("secondry-date");
-console.log(authorSec, dateSec, secDesc);
 
 /************************************************************************** */
 const latestNewsContainerEl = document.querySelector(".latest-news");
@@ -75,13 +83,13 @@ function getHeadlines() {
   if (!keyword) keyword = "health";
   const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=${lang}&sortBy=publishedAt&apiKey=${apiKey}`;
   // const url = `https://newsapi.org/v2/everything?q=${keyword} + ${country}&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
-  const x = fetch(url)
+  return fetch(url)
     .then((res) => {
       return res.json();
     })
     .then((response) => {
       addToDom(response);
-      console.log(response);
+      return response;
     })
     .catch((err) => {
       console.log("error occured", err);
@@ -149,26 +157,35 @@ function createSkeleton() {
   return newsContainer;
 }
 
-function getLatestNews() {
+function getLatestNews(e) {
   const lang = languageEl.value;
-  let keyword = query.value;
+  let keyword;
+  if (e && e.target && e.target.classList.contains("tag")) {
+    keyword = e.target.textContent;
+    console.log("this is ", keyword);
+    query.value = keyword; // optional: update the search box
+  }
+
+  keyword = query.value;
   console.log(keyword);
+
   if (!keyword) keyword = "india";
   //const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${apiKey}`;//
-  const urlLatest = `https://newsapi.org/v2/everything?q=india&language=${lang}&sortBy=publishedAt&apiKey=${apiKey}`;
+  const urlLatest = `https://newsapi.org/v2/everything?q=${keyword}&language=${lang}&sortBy=publishedAt&apiKey=${apiKey}`;
 
-  const latestNews = fetch(urlLatest)
+  return fetch(urlLatest)
     .then((res) => {
-      console.log(res);
       return res.json();
     })
     .then((response) => {
       console.log(response);
       addInformationToSkeleton(response);
+      return response;
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
+    .finally(() => hideLoader());
 }
 
 function trendingNewsToUi(trending) {
@@ -211,14 +228,13 @@ function trendingNewsToUi(trending) {
 function getTrendingNews() {
   const lang = languageEl.value;
   const urlTrending = `https://newsapi.org/v2/everything?q=trending&language=${lang}&sortBy=popularity&apiKey=${apiKey}`;
-  const trending = fetch(urlTrending)
+  return fetch(urlTrending)
     .then((res) => {
-      console.log(res);
       return res.json();
     })
     .then((response) => {
-      console.log("trending", response);
       trendingNewsToUi(response);
+      return response;
     })
     .catch((err) => {
       console.log(err);
@@ -226,14 +242,36 @@ function getTrendingNews() {
 }
 /************************************************** */
 
-getLatestNews();
-
-getHeadlines();
-getTrendingNews();
-
 languageEl.addEventListener("change", getHeadlines);
 languageEl.addEventListener("change", getLatestNews);
 languageEl.addEventListener("change", getTrendingNews);
 
 const searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("click", MoveTosearchContent);
+
+function addContent() {
+  showLoader();
+
+  Promise.all([getLatestNews(), getHeadlines(), getTrendingNews()])
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => hideLoader());
+}
+/*********************************************** */
+
+const tagEl = document.getElementsByClassName("tag");
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("tag")) {
+    getLatestNews(e);
+    latestNewsContainerEl.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+console.log(tagEl);
+
+addContent();
