@@ -1,0 +1,29 @@
+{
+  "name": "news-laundry",
+  "version": "1.0.0",
+  "description": "News according to the date and searched key words",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vandanafuloria/News-Laundry.git"
+  },
+  "keywords": [
+    "news",
+    "news-laundry",
+    "updates",
+    "keywords"
+  ],
+  "author": "Vandana Fuloria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vandanafuloria/News-Laundry/issues"
+  },
+  "homepage": "https://github.com/vandanafuloria/News-Laundry#readme",
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  }
+}
