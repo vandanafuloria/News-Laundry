@@ -156,7 +156,7 @@ body{
 }
 .headline-primary{
     flex-basis: 60%;
-    min-width: 400px;
+    min-width: 350px;
 }
 .headline-secondry{
     flex-basis: 40%;
@@ -394,6 +394,11 @@ a:hover{
         position:relative;
         bottom: 0;
 
+    }
+}
+@media (max-width: 400px){
+    .lang{
+        margin-left: 4rem;
     }
 }
 .contact-container{
