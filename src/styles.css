@@ -217,7 +217,7 @@ font-family:math;
 
 .latest-news {
     padding:  2rem 0.5rem;
- 
+ width: 100%;
  flex-wrap: wrap;
  box-sizing: border-box;
 
@@ -236,8 +236,11 @@ font-family:math;
     border:2px solid var(--color);
     border-radius: 10px;
     overflow: hidden;
+    transform: scale(0.9);
+    transition: transform ease 0.3s;
 }
 .news:hover{
+    transform: scale(1);
    box-shadow: 2px 2px  10px var(--color); ;
 }
 .news img{

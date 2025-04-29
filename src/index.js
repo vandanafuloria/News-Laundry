@@ -227,7 +227,7 @@ function trendingNewsToUi(trending) {
 
 function getTrendingNews() {
   const lang = languageEl.value;
-  const urlTrending = `https://newsapi.org/v2/everything?q=trending&language=${lang}&sortBy=popularity&apiKey=${apiKey}`;
+  const urlTrending = `https://newsapi.org/v2/everything?q=india&language=${lang}&sortBy=popularity&apiKey=${apiKey}`;
   return fetch(urlTrending)
     .then((res) => {
       return res.json();
